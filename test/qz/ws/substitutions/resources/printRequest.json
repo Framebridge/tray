@@ -21,6 +21,7 @@
       "rasterize": false,
       "rotation": 0,
       "scaleContent": true,
+      "allowMultiPage": false,
       "size": {
         "width": "4",
         "height": "6"

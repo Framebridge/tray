@@ -466,6 +466,7 @@ var qz = (function() {
                 rasterize: false,
                 rotation: 0,
                 scaleContent: true,
+                allowMultiPage: true,
                 size: null,
                 units: 'in',
 
@@ -1517,6 +1518,7 @@ var qz = (function() {
              *                                             Specifying <code>[options.density]</code> for PDF print formats will set this to <code>true</code>.
              *  @param {number} [options.rotation=0] Image rotation in degrees.
              *  @param {boolean} [options.scaleContent=true] Scales print content to page size, keeping ratio.
+             *  @param {boolean} [options.allowMultiPage=true] Allows specification around whether a job should allow printing over multiple pages when scaleContent is set to false.
              *  @param {Object} [options.size=null] Paper size.
              *   @param {number} [options.size.width=null] Page width.
              *   @param {number} [options.size.height=null] Page height.

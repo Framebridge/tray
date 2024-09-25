@@ -53,6 +53,7 @@ public class PrintImage extends PrintPixel implements PrintProcessor, Printable 
 
     protected double dpiScale = 1;
     protected boolean scaleImage = false;
+    protected boolean allowMultiPage = false;
     protected Object dithering = RenderingHints.VALUE_DITHER_DEFAULT;
     protected Object interpolation = RenderingHints.VALUE_INTERPOLATION_BICUBIC;
     protected double imageRotation = 0;
@@ -145,6 +146,7 @@ public class PrintImage extends PrintPixel implements PrintProcessor, Printable 
         dithering = pxlOpts.getDithering();
         interpolation = pxlOpts.getInterpolation();
         imageRotation = pxlOpts.getRotation();
+        allowMultiPage = pxlOpts.isAllowMultiPage();
 
         //reverse fix for OSX
         if (SystemUtilities.isMac() && pxlOpts.getOrientation() != null
@@ -153,7 +155,7 @@ public class PrintImage extends PrintPixel implements PrintProcessor, Printable 
             manualReverse = true;
         }
 
-        if (!scaleImage) {
+        if (!scaleImage && allowMultiPage) {
             //breakup large images to print across pages as needed
             List<BufferedImage> split = new ArrayList<>();
             for(BufferedImage bi : images) {

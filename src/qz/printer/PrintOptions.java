@@ -331,6 +331,10 @@ public class PrintOptions {
             try { psOptions.scaleContent = configOpts.getBoolean("scaleContent"); }
             catch(JSONException e) { LoggerUtilities.optionWarn(log, "boolean", "scaleContent", configOpts.opt("scaleContent")); }
         }
+        if (!configOpts.isNull("allowMultiPage")) {
+            try { psOptions.allowMultiPage = configOpts.getBoolean("allowMultiPage"); }
+            catch(JSONException e) { LoggerUtilities.optionWarn(log, "boolean", "allowMultiPage", configOpts.opt("allowMultiPage")); }
+        }
         if (!configOpts.isNull("size")) {
             Size s = new Size();
             JSONObject subSize = configOpts.optJSONObject("size");
@@ -476,6 +480,7 @@ public class PrintOptions {
         private boolean rasterize = true;                                           //Whether documents are rasterized before printing
         private double rotation = 0;                                                //Image rotation
         private boolean scaleContent = true;                                        //Adjust paper size for best image fit
+        private boolean allowMultiPage = true;                                      //Allow job to print over multiple pages
         private Size size = null;                                                   //Paper size
         private Unit units = Unit.INCH;                                             //Units for density, margins, size
 
@@ -550,6 +555,10 @@ public class PrintOptions {
 
         public boolean isScaleContent() {
             return scaleContent;
+        }
+
+        public boolean isAllowMultiPage() {
+            return allowMultiPage;
         }
 
         public Size getSize() {
